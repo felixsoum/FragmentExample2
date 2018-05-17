@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class InfoFragment extends Fragment {
-    private static final String ARG_PARAM1 = "index";
+    public static final String INDEX_PARAM = "index";
     private int index;
 
     String[] INFOS = new String[]{
@@ -24,7 +24,7 @@ public class InfoFragment extends Fragment {
     public static InfoFragment newInstance(int index) {
         InfoFragment fragment = new InfoFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_PARAM1, index);
+        args.putInt(INDEX_PARAM, index);
         fragment.setArguments(args);
         return fragment;
     }
@@ -33,7 +33,7 @@ public class InfoFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            index = getArguments().getInt(ARG_PARAM1);
+            index = getArguments().getInt(INDEX_PARAM);
         }
     }
 
