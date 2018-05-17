@@ -22,7 +22,6 @@ public class TeamFragment extends ListFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setListAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, TEAMS));
-        getListView().setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
         View infoFrame = getActivity().findViewById(R.id.info);
         isInfoActive = infoFrame != null && infoFrame.getVisibility() == View.VISIBLE;
@@ -39,12 +38,9 @@ public class TeamFragment extends ListFragment {
     void showInfo(int index) {
         currentIndex = index;
         if (isInfoActive) {
-            getListView().setItemChecked(index, true);
             InfoFragment infoFragment = (InfoFragment) getFragmentManager().findFragmentById(R.id.info);
-
             if (infoFragment == null || infoFragment.getIndex() != index) {
                 infoFragment = InfoFragment.newInstance(index);
-
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.info, infoFragment);
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
